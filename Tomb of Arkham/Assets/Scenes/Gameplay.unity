@@ -3887,7 +3887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4274868087642060, guid: 16e7451e81164bc4caac73768f16ceb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4274868087642060, guid: 16e7451e81164bc4caac73768f16ceb6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6439,6 +6439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb92de0f6f60bc7479db0225c4c1043e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idlePosition: {x: 0, y: 1000, z: 0}
   currentLevelSpawnpoint: {x: 31.45, y: 1, z: -17.58}
   backDropCamera: {fileID: 963194227}
   playerCam: {fileID: 267683080}
