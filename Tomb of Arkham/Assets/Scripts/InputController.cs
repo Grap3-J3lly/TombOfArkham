@@ -1,27 +1,21 @@
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1)]
 public class InputController : MonoBehaviour
 {
     //------------------------------------------------------
     //                   VARIABLES
     //------------------------------------------------------
-    public static InputController Instance;
-    private bool isTouched = false;
-    private Touch activeTouch = new Touch();
-    public string testString = "pressing screen";
+     public static InputController Instance;
+    private ControlLayout controlLayout;
 
-    //------------------------------------------------------
-    //                   GETTERS/SETTERS
-    //------------------------------------------------------
+    public delegate void StartTouchEvent();
+    public event StartTouchEvent OnStartTouch;
+    public delegate void EndTouchEvent(Vector2 position);
+    public event EndTouchEvent OnEndTouch;
 
-    public bool GetIsTouched() {return isTouched;}
-    public void SetIsTouched(bool newValue) {isTouched = newValue;}
-
-    public Touch GetTouch() {return activeTouch;}
-    public void SetTouch(Touch newTouch) {activeTouch = newTouch;}
+    
 
     //------------------------------------------------------
     //                   STANDARD FUNCTIONS
@@ -29,33 +23,40 @@ public class InputController : MonoBehaviour
 
     private void Awake() {
         Instance = this;  
+        controlLayout = new ControlLayout();
     }
 
     private void OnEnable() {
-        EnhancedTouchSupport.Enable();
+        controlLayout.Menus.Enable();
     }
 
     private void OnDisable() {
-        EnhancedTouchSupport.Disable();
+        controlLayout.Menus.Disable();
     }
 
     private void Update() {
-        DetectTouch();
+
+    }
+
+    private void Start() {
+        controlLayout.Menus.TouchPress.performed += StartTouch;
+        controlLayout.Menus.TouchPress.canceled += EndTouch;
     }
 
     //------------------------------------------------------
     //                   DETECTION FUNCTIONS
     //------------------------------------------------------
 
-    private void DetectTouch() {
-        if(Touch.activeFingers.Count == 1) {
-            Debug.Log("TOUCH IS FOUND");
-            activeTouch = Touch.activeFingers[0].currentTouch;
-            if(activeTouch.phase == TouchPhase.Began) {
-                isTouched = true;
-            } else {
-                isTouched = false;
-            }
+    public void StartTouch(InputAction.CallbackContext context) {
+        if(OnStartTouch != null) {
+            OnStartTouch();
         }
+                
+    }
+
+     public void EndTouch(InputAction.CallbackContext context) {
+         if(OnEndTouch != null) {
+             OnEndTouch(controlLayout.Menus.TouchPosition.ReadValue<Vector2>());
+         }
     }
 }

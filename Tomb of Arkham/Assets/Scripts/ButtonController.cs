@@ -57,18 +57,26 @@ public class ButtonController : MonoBehaviour
 
     private void Awake() {
         levelManager = LevelManager.Instance;
+        inputController = InputController.Instance;
         thisObject = GetComponent<RectTransform>().gameObject;
     }
 
     private void Start() {
-        inputController = InputController.Instance;
         GetComponent<RectTransform>().GetWorldCorners(buttonCorners);
         HandleWorldCorners();
     }
 
     private void Update() {
-        HandleButtonPress();
         HandleOptions();
+    }
+
+    private void OnEnable() {
+        inputController.OnEndTouch += WithinBounds;
+    }
+
+    private void OnDisable() {
+        inputController.OnEndTouch -= WithinBounds;
+
     }
 
     //------------------------------------------------------
@@ -105,19 +113,9 @@ public class ButtonController : MonoBehaviour
         return false;
     }
 
-    private void HandleButtonPress() {
-        if(inputController.GetIsTouched() && !IgnoreHudButtons()) {
-            TestMenuChange();
-            WithinBounds(inputController.GetTouch().startScreenPosition);
-        }
-    }
-
     private void HandleOptions() {
         
     }
 
-    private void TestMenuChange() {
-        TMP_Text mainText = GetComponent<RectTransform>().parent.GetComponent<RectTransform>().parent.GetComponentInChildren<TMP_Text>();
-        mainText.text = inputController.testString;
-    }
+
 }

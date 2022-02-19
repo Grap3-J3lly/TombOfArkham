@@ -854,12 +854,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153706196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &153706199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,12 +1102,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286320930}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &286320933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,12 +1545,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388680630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &388680633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1997,12 +1997,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438448406}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &438448409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,12 +2279,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568351209}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &568351212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2485,7 +2485,7 @@ Transform:
   - {fileID: 291777359}
   - {fileID: 1867102780}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &592645094
 PrefabInstance:
@@ -2936,7 +2936,7 @@ MonoBehaviour:
     m_ActionId: b888ebf4-1a70-490b-856d-4f8101d2fb63
     m_ActionName: Basics/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: PrimaryControlLayout
   m_DefaultActionMap: Basics
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 267683080}
@@ -3207,12 +3207,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721233685}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &721233688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,12 +3503,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769329249}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &769329252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,7 +3568,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769329249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3930,6 +3930,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4229434978057128, guid: 03522bb5dd98b2b49b21ea6c9516b2d3, type: 3}
   m_PrefabInstance: {fileID: 2143072397}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &876037891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7683610694490931261, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
+  m_PrefabInstance: {fileID: 1281986275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &876037896
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876037891}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &898373818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,12 +3997,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898373818}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &898373821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,12 +4101,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908075590}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &908075593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4184,12 +4205,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920035268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &920035271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4541,7 +4562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974131871}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4862,12 +4883,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027154165}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1027154168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5327,12 +5348,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211198025}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1211198028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5431,12 +5452,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223750095}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1223750098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5540,6 +5561,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuType: 5
+--- !u!1001 &1264359844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6909851782083225545, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_Name
+      value: DungeonTiileBasic (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 998.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1.134464e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1.134464e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914034731863394547, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3750a4403e6d4f24d8312a34e9290297, type: 3}
 --- !u!1 &1265384263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5645,6 +5723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 7683610694490931261, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7683610694490931262, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5655,7 +5737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683610694490931262, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1000
+      value: 998.68
       objectReference: {fileID: 0}
     - target: {fileID: 7683610694490931262, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5689,6 +5771,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7683610694490931263, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: f47c1cc565dc8b74ebed77f6ecfd3e20, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef857cf5769a5147808720ee08394f0, type: 3}
 --- !u!1 &1290787294
@@ -6078,12 +6164,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325228770}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1325228773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6781,12 +6867,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446778473}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1446778476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7159,12 +7245,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482904613}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1482904616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7451,12 +7537,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504374871}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1504374874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7516,7 +7602,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504374871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7596,12 +7682,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511523595}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1511523598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7710,12 +7796,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530720098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1530720101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7814,12 +7900,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534245821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1534245824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8617,12 +8703,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644212376}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1644212379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8841,7 +8927,7 @@ Transform:
   - {fileID: 825666220}
   - {fileID: 699310203}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760872933
 GameObject:
@@ -8890,12 +8976,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760872933}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1760872936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8955,7 +9041,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760872933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9035,12 +9121,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842138435}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1842138438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9279,12 +9365,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897888174}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1897888177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9554,12 +9640,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911940808}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1911940811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9834,12 +9920,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934973641}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1934973644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9938,12 +10024,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960357426}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &1960357429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10226,12 +10312,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029540667}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/e
+  m_ControlPath: <Touchscreen>/primaryTouch/tap
 --- !u!114 &2029540670
 MonoBehaviour:
   m_ObjectHideFlags: 0
