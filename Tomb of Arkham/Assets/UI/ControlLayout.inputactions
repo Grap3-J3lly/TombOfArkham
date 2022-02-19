@@ -129,100 +129,19 @@
             "id": "46ad811f-bc09-4315-980f-95a4ecf72c87",
             "actions": [
                 {
-                    "name": "PlayLevel",
-                    "type": "PassThrough",
-                    "id": "f3e040c5-9a37-4326-8ee5-8df32cdfb69e",
-                    "expectedControlType": "Touch",
+                    "name": "TouchPress",
+                    "type": "Button",
+                    "id": "76fe8898-2eb0-4d49-bc8b-11c6c567f2cf",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NextScreen",
+                    "name": "TouchPosition",
                     "type": "PassThrough",
-                    "id": "cc3e86ea-fed2-48da-a8bb-619e2fe71de2",
-                    "expectedControlType": "Touch",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "RestartLevel",
-                    "type": "PassThrough",
-                    "id": "f652d959-821f-4b0a-bcf9-d7e03c001764",
-                    "expectedControlType": "Touch",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleMusic",
-                    "type": "PassThrough",
-                    "id": "64248c49-fe3a-41b7-a4dc-947bc635d92f",
-                    "expectedControlType": "Touch",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleSound",
-                    "type": "PassThrough",
-                    "id": "8e47b053-5cb6-4d74-a021-613ebfc733eb",
-                    "expectedControlType": "Touch",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeGameVolume",
-                    "type": "PassThrough",
-                    "id": "9c3b3794-068e-46fe-8d71-088e4f111cf8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeMusicVolume",
-                    "type": "PassThrough",
-                    "id": "cedcc405-63b0-41aa-b590-fdbad8501cdf",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeSoundVolume",
-                    "type": "PassThrough",
-                    "id": "4ea0fc18-dc49-4db1-8f7c-024537c0f125",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Pause",
-                    "type": "PassThrough",
-                    "id": "23a8179f-bad4-4183-933b-d5a734c2dd4c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Unpause",
-                    "type": "PassThrough",
-                    "id": "9d667094-bbb1-4bae-a226-4930bf6d26fe",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleButtonInversion",
-                    "type": "PassThrough",
-                    "id": "b30a5f59-d8a7-4200-8d82-fa0f7b6e7914",
-                    "expectedControlType": "",
+                    "id": "03972c93-660c-4119-9896-d129bd47d9e8",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -231,122 +150,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "9481db81-50ff-4f89-b7c7-5a91b3956e0e",
-                    "path": "<Touchscreen>/primaryTouch",
+                    "id": "891c2234-03d8-4ad8-b2d2-da6efa10168f",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "PrimaryControlLayout",
-                    "action": "PlayLevel",
+                    "action": "TouchPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "6bcf7bd5-53e5-44c3-8090-9f4e348f5278",
-                    "path": "<Touchscreen>/primaryTouch",
+                    "id": "86d34298-b866-478a-9839-43c4cb36b99a",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "PrimaryControlLayout",
-                    "action": "NextScreen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "20c0905d-d73e-4085-ab8f-d73a4c6ba538",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "RestartLevel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0d9b76b4-17df-4aef-851b-b3fb763412f6",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ToggleMusic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "50f4eef7-b0b3-4bc2-9eeb-2c0f14feee65",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ToggleSound",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "08800061-e6ee-4ee9-b2a1-d76e0583cdfc",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ChangeGameVolume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bf264e1-8b67-49e3-a1b4-f60b947b10ef",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ChangeMusicVolume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6f792d8-be1e-45de-bab9-a5a8e453c4b2",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ChangeSoundVolume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "90b5586f-77eb-4d32-ac89-832042e35447",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e52e894f-c352-4a54-b727-a4b2f6422403",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "Unpause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "53c74f25-ffc1-4e6c-aef2-db024cbcf07c",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PrimaryControlLayout",
-                    "action": "ToggleButtonInversion",
+                    "action": "TouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

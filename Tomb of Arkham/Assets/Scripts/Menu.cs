@@ -72,7 +72,7 @@ public class Menu : MonoBehaviour
         levelManager = LevelManager.Instance;
         CreateMenuList();
         thisObject = GetComponent<RectTransform>().gameObject;
-        inputController = InputController.Instance;
+        //inputController = InputController.Instance;
     }
 
     private void Update() {

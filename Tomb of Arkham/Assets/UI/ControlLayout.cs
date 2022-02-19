@@ -151,100 +151,19 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
             ""id"": ""46ad811f-bc09-4315-980f-95a4ecf72c87"",
             ""actions"": [
                 {
-                    ""name"": ""PlayLevel"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""f3e040c5-9a37-4326-8ee5-8df32cdfb69e"",
-                    ""expectedControlType"": ""Touch"",
+                    ""name"": ""TouchPress"",
+                    ""type"": ""Button"",
+                    ""id"": ""76fe8898-2eb0-4d49-bc8b-11c6c567f2cf"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextScreen"",
+                    ""name"": ""TouchPosition"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""cc3e86ea-fed2-48da-a8bb-619e2fe71de2"",
-                    ""expectedControlType"": ""Touch"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RestartLevel"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""f652d959-821f-4b0a-bcf9-d7e03c001764"",
-                    ""expectedControlType"": ""Touch"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ToggleMusic"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""64248c49-fe3a-41b7-a4dc-947bc635d92f"",
-                    ""expectedControlType"": ""Touch"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ToggleSound"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""8e47b053-5cb6-4d74-a021-613ebfc733eb"",
-                    ""expectedControlType"": ""Touch"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeGameVolume"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""9c3b3794-068e-46fe-8d71-088e4f111cf8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeMusicVolume"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""cedcc405-63b0-41aa-b590-fdbad8501cdf"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeSoundVolume"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""4ea0fc18-dc49-4db1-8f7c-024537c0f125"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""23a8179f-bad4-4183-933b-d5a734c2dd4c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Unpause"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""9d667094-bbb1-4bae-a226-4930bf6d26fe"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ToggleButtonInversion"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""b30a5f59-d8a7-4200-8d82-fa0f7b6e7914"",
-                    ""expectedControlType"": """",
+                    ""id"": ""03972c93-660c-4119-9896-d129bd47d9e8"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -253,122 +172,23 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""9481db81-50ff-4f89-b7c7-5a91b3956e0e"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""id"": ""891c2234-03d8-4ad8-b2d2-da6efa10168f"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""PlayLevel"",
+                    ""action"": ""TouchPress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6bcf7bd5-53e5-44c3-8090-9f4e348f5278"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""id"": ""86d34298-b866-478a-9839-43c4cb36b99a"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""NextScreen"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""20c0905d-d73e-4085-ab8f-d73a4c6ba538"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""RestartLevel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0d9b76b4-17df-4aef-851b-b3fb763412f6"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ToggleMusic"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""50f4eef7-b0b3-4bc2-9eeb-2c0f14feee65"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ToggleSound"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""08800061-e6ee-4ee9-b2a1-d76e0583cdfc"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ChangeGameVolume"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5bf264e1-8b67-49e3-a1b4-f60b947b10ef"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ChangeMusicVolume"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b6f792d8-be1e-45de-bab9-a5a8e453c4b2"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ChangeSoundVolume"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""90b5586f-77eb-4d32-ac89-832042e35447"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e52e894f-c352-4a54-b727-a4b2f6422403"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""Unpause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""53c74f25-ffc1-4e6c-aef2-db024cbcf07c"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PrimaryControlLayout"",
-                    ""action"": ""ToggleButtonInversion"",
+                    ""action"": ""TouchPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -416,17 +236,8 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
         m_Basics_Attack = m_Basics.FindAction("Attack", throwIfNotFound: true);
         // Menus
         m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
-        m_Menus_PlayLevel = m_Menus.FindAction("PlayLevel", throwIfNotFound: true);
-        m_Menus_NextScreen = m_Menus.FindAction("NextScreen", throwIfNotFound: true);
-        m_Menus_RestartLevel = m_Menus.FindAction("RestartLevel", throwIfNotFound: true);
-        m_Menus_ToggleMusic = m_Menus.FindAction("ToggleMusic", throwIfNotFound: true);
-        m_Menus_ToggleSound = m_Menus.FindAction("ToggleSound", throwIfNotFound: true);
-        m_Menus_ChangeGameVolume = m_Menus.FindAction("ChangeGameVolume", throwIfNotFound: true);
-        m_Menus_ChangeMusicVolume = m_Menus.FindAction("ChangeMusicVolume", throwIfNotFound: true);
-        m_Menus_ChangeSoundVolume = m_Menus.FindAction("ChangeSoundVolume", throwIfNotFound: true);
-        m_Menus_Pause = m_Menus.FindAction("Pause", throwIfNotFound: true);
-        m_Menus_Unpause = m_Menus.FindAction("Unpause", throwIfNotFound: true);
-        m_Menus_ToggleButtonInversion = m_Menus.FindAction("ToggleButtonInversion", throwIfNotFound: true);
+        m_Menus_TouchPress = m_Menus.FindAction("TouchPress", throwIfNotFound: true);
+        m_Menus_TouchPosition = m_Menus.FindAction("TouchPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -535,32 +346,14 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
     // Menus
     private readonly InputActionMap m_Menus;
     private IMenusActions m_MenusActionsCallbackInterface;
-    private readonly InputAction m_Menus_PlayLevel;
-    private readonly InputAction m_Menus_NextScreen;
-    private readonly InputAction m_Menus_RestartLevel;
-    private readonly InputAction m_Menus_ToggleMusic;
-    private readonly InputAction m_Menus_ToggleSound;
-    private readonly InputAction m_Menus_ChangeGameVolume;
-    private readonly InputAction m_Menus_ChangeMusicVolume;
-    private readonly InputAction m_Menus_ChangeSoundVolume;
-    private readonly InputAction m_Menus_Pause;
-    private readonly InputAction m_Menus_Unpause;
-    private readonly InputAction m_Menus_ToggleButtonInversion;
+    private readonly InputAction m_Menus_TouchPress;
+    private readonly InputAction m_Menus_TouchPosition;
     public struct MenusActions
     {
         private @ControlLayout m_Wrapper;
         public MenusActions(@ControlLayout wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PlayLevel => m_Wrapper.m_Menus_PlayLevel;
-        public InputAction @NextScreen => m_Wrapper.m_Menus_NextScreen;
-        public InputAction @RestartLevel => m_Wrapper.m_Menus_RestartLevel;
-        public InputAction @ToggleMusic => m_Wrapper.m_Menus_ToggleMusic;
-        public InputAction @ToggleSound => m_Wrapper.m_Menus_ToggleSound;
-        public InputAction @ChangeGameVolume => m_Wrapper.m_Menus_ChangeGameVolume;
-        public InputAction @ChangeMusicVolume => m_Wrapper.m_Menus_ChangeMusicVolume;
-        public InputAction @ChangeSoundVolume => m_Wrapper.m_Menus_ChangeSoundVolume;
-        public InputAction @Pause => m_Wrapper.m_Menus_Pause;
-        public InputAction @Unpause => m_Wrapper.m_Menus_Unpause;
-        public InputAction @ToggleButtonInversion => m_Wrapper.m_Menus_ToggleButtonInversion;
+        public InputAction @TouchPress => m_Wrapper.m_Menus_TouchPress;
+        public InputAction @TouchPosition => m_Wrapper.m_Menus_TouchPosition;
         public InputActionMap Get() { return m_Wrapper.m_Menus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -570,76 +363,22 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_MenusActionsCallbackInterface != null)
             {
-                @PlayLevel.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnPlayLevel;
-                @PlayLevel.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnPlayLevel;
-                @PlayLevel.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnPlayLevel;
-                @NextScreen.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnNextScreen;
-                @NextScreen.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnNextScreen;
-                @NextScreen.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnNextScreen;
-                @RestartLevel.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnRestartLevel;
-                @RestartLevel.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnRestartLevel;
-                @RestartLevel.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnRestartLevel;
-                @ToggleMusic.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleMusic;
-                @ToggleMusic.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleMusic;
-                @ToggleMusic.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleMusic;
-                @ToggleSound.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleSound;
-                @ToggleSound.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleSound;
-                @ToggleSound.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleSound;
-                @ChangeGameVolume.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeGameVolume;
-                @ChangeGameVolume.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeGameVolume;
-                @ChangeGameVolume.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeGameVolume;
-                @ChangeMusicVolume.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeMusicVolume;
-                @ChangeMusicVolume.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeMusicVolume;
-                @ChangeMusicVolume.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeMusicVolume;
-                @ChangeSoundVolume.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeSoundVolume;
-                @ChangeSoundVolume.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeSoundVolume;
-                @ChangeSoundVolume.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnChangeSoundVolume;
-                @Pause.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnPause;
-                @Unpause.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnUnpause;
-                @Unpause.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnUnpause;
-                @Unpause.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnUnpause;
-                @ToggleButtonInversion.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleButtonInversion;
-                @ToggleButtonInversion.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleButtonInversion;
-                @ToggleButtonInversion.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnToggleButtonInversion;
+                @TouchPress.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPress;
+                @TouchPress.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPress;
+                @TouchPress.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPress;
+                @TouchPosition.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPosition;
+                @TouchPosition.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPosition;
+                @TouchPosition.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnTouchPosition;
             }
             m_Wrapper.m_MenusActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PlayLevel.started += instance.OnPlayLevel;
-                @PlayLevel.performed += instance.OnPlayLevel;
-                @PlayLevel.canceled += instance.OnPlayLevel;
-                @NextScreen.started += instance.OnNextScreen;
-                @NextScreen.performed += instance.OnNextScreen;
-                @NextScreen.canceled += instance.OnNextScreen;
-                @RestartLevel.started += instance.OnRestartLevel;
-                @RestartLevel.performed += instance.OnRestartLevel;
-                @RestartLevel.canceled += instance.OnRestartLevel;
-                @ToggleMusic.started += instance.OnToggleMusic;
-                @ToggleMusic.performed += instance.OnToggleMusic;
-                @ToggleMusic.canceled += instance.OnToggleMusic;
-                @ToggleSound.started += instance.OnToggleSound;
-                @ToggleSound.performed += instance.OnToggleSound;
-                @ToggleSound.canceled += instance.OnToggleSound;
-                @ChangeGameVolume.started += instance.OnChangeGameVolume;
-                @ChangeGameVolume.performed += instance.OnChangeGameVolume;
-                @ChangeGameVolume.canceled += instance.OnChangeGameVolume;
-                @ChangeMusicVolume.started += instance.OnChangeMusicVolume;
-                @ChangeMusicVolume.performed += instance.OnChangeMusicVolume;
-                @ChangeMusicVolume.canceled += instance.OnChangeMusicVolume;
-                @ChangeSoundVolume.started += instance.OnChangeSoundVolume;
-                @ChangeSoundVolume.performed += instance.OnChangeSoundVolume;
-                @ChangeSoundVolume.canceled += instance.OnChangeSoundVolume;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
-                @Unpause.started += instance.OnUnpause;
-                @Unpause.performed += instance.OnUnpause;
-                @Unpause.canceled += instance.OnUnpause;
-                @ToggleButtonInversion.started += instance.OnToggleButtonInversion;
-                @ToggleButtonInversion.performed += instance.OnToggleButtonInversion;
-                @ToggleButtonInversion.canceled += instance.OnToggleButtonInversion;
+                @TouchPress.started += instance.OnTouchPress;
+                @TouchPress.performed += instance.OnTouchPress;
+                @TouchPress.canceled += instance.OnTouchPress;
+                @TouchPosition.started += instance.OnTouchPosition;
+                @TouchPosition.performed += instance.OnTouchPosition;
+                @TouchPosition.canceled += instance.OnTouchPosition;
             }
         }
     }
@@ -661,16 +400,7 @@ public partial class @ControlLayout : IInputActionCollection2, IDisposable
     }
     public interface IMenusActions
     {
-        void OnPlayLevel(InputAction.CallbackContext context);
-        void OnNextScreen(InputAction.CallbackContext context);
-        void OnRestartLevel(InputAction.CallbackContext context);
-        void OnToggleMusic(InputAction.CallbackContext context);
-        void OnToggleSound(InputAction.CallbackContext context);
-        void OnChangeGameVolume(InputAction.CallbackContext context);
-        void OnChangeMusicVolume(InputAction.CallbackContext context);
-        void OnChangeSoundVolume(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
-        void OnUnpause(InputAction.CallbackContext context);
-        void OnToggleButtonInversion(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
     }
 }
