@@ -1,0 +1,389 @@
+{
+    "name": "ControlLayout",
+    "maps": [
+        {
+            "name": "Basics",
+            "id": "03afed85-c168-493d-8ee3-e232f6283328",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "be05ecce-f526-47cc-b1d4-15c2f55941c6",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "b888ebf4-1a70-490b-856d-4f8101d2fb63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "5a6e0d7e-cee3-4349-8b3f-5a09164f334d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2c97fb82-1c15-4fd4-8860-b2d64120d43b",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard Keys",
+                    "id": "168a2126-1111-475b-8118-cbece8f4ebb1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b734a0e5-8ea9-43fd-9a94-9220995fc37e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c1bc8331-94d9-4cdd-b4b7-b1a741dc79fd",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "f354d1f4-df33-4720-a9cc-a93f3b3eb393",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f79a017c-e033-4c58-ae9c-816dc21fed6c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9ec2d86d-3217-431e-bc1b-929af549e23b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d07a41de-d4d4-44e0-84c4-ec81092d36dc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menus",
+            "id": "46ad811f-bc09-4315-980f-95a4ecf72c87",
+            "actions": [
+                {
+                    "name": "PlayLevel",
+                    "type": "PassThrough",
+                    "id": "f3e040c5-9a37-4326-8ee5-8df32cdfb69e",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextScreen",
+                    "type": "PassThrough",
+                    "id": "cc3e86ea-fed2-48da-a8bb-619e2fe71de2",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RestartLevel",
+                    "type": "PassThrough",
+                    "id": "f652d959-821f-4b0a-bcf9-d7e03c001764",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleMusic",
+                    "type": "PassThrough",
+                    "id": "64248c49-fe3a-41b7-a4dc-947bc635d92f",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSound",
+                    "type": "PassThrough",
+                    "id": "8e47b053-5cb6-4d74-a021-613ebfc733eb",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeGameVolume",
+                    "type": "PassThrough",
+                    "id": "9c3b3794-068e-46fe-8d71-088e4f111cf8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeMusicVolume",
+                    "type": "PassThrough",
+                    "id": "cedcc405-63b0-41aa-b590-fdbad8501cdf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeSoundVolume",
+                    "type": "PassThrough",
+                    "id": "4ea0fc18-dc49-4db1-8f7c-024537c0f125",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "PassThrough",
+                    "id": "23a8179f-bad4-4183-933b-d5a734c2dd4c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Unpause",
+                    "type": "PassThrough",
+                    "id": "9d667094-bbb1-4bae-a226-4930bf6d26fe",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleButtonInversion",
+                    "type": "PassThrough",
+                    "id": "b30a5f59-d8a7-4200-8d82-fa0f7b6e7914",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9481db81-50ff-4f89-b7c7-5a91b3956e0e",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "PlayLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bcf7bd5-53e5-44c3-8090-9f4e348f5278",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "NextScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20c0905d-d73e-4085-ab8f-d73a4c6ba538",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "RestartLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d9b76b4-17df-4aef-851b-b3fb763412f6",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ToggleMusic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50f4eef7-b0b3-4bc2-9eeb-2c0f14feee65",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ToggleSound",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08800061-e6ee-4ee9-b2a1-d76e0583cdfc",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ChangeGameVolume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bf264e1-8b67-49e3-a1b4-f60b947b10ef",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ChangeMusicVolume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6f792d8-be1e-45de-bab9-a5a8e453c4b2",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ChangeSoundVolume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90b5586f-77eb-4d32-ac89-832042e35447",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e52e894f-c352-4a54-b727-a4b2f6422403",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "Unpause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53c74f25-ffc1-4e6c-aef2-db024cbcf07c",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PrimaryControlLayout",
+                    "action": "ToggleButtonInversion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PrimaryControlLayout",
+            "bindingGroup": "PrimaryControlLayout",
+            "devices": [
+                {
+                    "devicePath": "<AndroidGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<AndroidJoystick>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
