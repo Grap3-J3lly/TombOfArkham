@@ -15,7 +15,6 @@ ScriptsOnlyBuild:
     - TPAnchorController
     - Unlockable
     Unity.InputSystem.dll:
-    - UnityEngine.InputSystem.Editor.InputActionEditorWindow
     - UnityEngine.InputSystem.EnhancedTouch.TouchSimulation
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
@@ -83,15 +82,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 1850}
+      Script: {instanceID: 1856}
     - Class: 114
-      Script: {instanceID: 5052}
+      Script: {instanceID: 5058}
     - Class: 114
-      Script: {instanceID: 5170}
+      Script: {instanceID: 5176}
     - Class: 114
-      Script: {instanceID: 5424}
+      Script: {instanceID: 5430}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -152,51 +151,51 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1504}
+      Script: {instanceID: 1510}
     - Class: 114
-      Script: {instanceID: 1560}
+      Script: {instanceID: 1566}
     - Class: 114
-      Script: {instanceID: 1696}
+      Script: {instanceID: 1702}
     - Class: 114
-      Script: {instanceID: 1870}
+      Script: {instanceID: 1876}
     - Class: 114
-      Script: {instanceID: 2084}
+      Script: {instanceID: 2090}
     - Class: 114
-      Script: {instanceID: 2226}
+      Script: {instanceID: 2232}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2470}
     - Class: 114
-      Script: {instanceID: 2622}
+      Script: {instanceID: 2628}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2796}
+      Script: {instanceID: 2802}
     - Class: 114
-      Script: {instanceID: 2842}
+      Script: {instanceID: 2848}
     - Class: 114
-      Script: {instanceID: 2992}
+      Script: {instanceID: 2998}
     - Class: 114
-      Script: {instanceID: 3260}
+      Script: {instanceID: 3266}
     - Class: 114
-      Script: {instanceID: 3618}
+      Script: {instanceID: 3624}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 3806}
+      Script: {instanceID: 3812}
     - Class: 114
-      Script: {instanceID: 4114}
+      Script: {instanceID: 4120}
     - Class: 114
-      Script: {instanceID: 4486}
+      Script: {instanceID: 4492}
     - Class: 114
-      Script: {instanceID: 4508}
+      Script: {instanceID: 4514}
     - Class: 114
-      Script: {instanceID: 4650}
+      Script: {instanceID: 4656}
     - Class: 114
-      Script: {instanceID: 4884}
+      Script: {instanceID: 4890}
     - Class: 114
-      Script: {instanceID: 4994}
+      Script: {instanceID: 5000}
     - Class: 114
-      Script: {instanceID: 5208}
+      Script: {instanceID: 5214}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -213,11 +212,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
     Assets/Scenes/NormalLevel.unity:
     - Class: 1
@@ -249,11 +252,11 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 5424}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5428}
+      Script: {instanceID: 5434}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -477,7 +480,7 @@ ScriptsOnlyBuild:
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: 6f7a5580fba46079504245d0b9b7aecb
+      Hash: c1c7cae7570f9114ede670c61a654013
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -1297,4 +1300,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/NormalLevel.unity
   - Assets/Scenes/BossLevel.unity
   playerPath: D:/Users/James/Documents/Coding/Git/Reposities/TombOfArkham/Tomb of
-    Arkham/Builds/TouchFix.apk
+    Arkham/Builds/CompleteMenus.apk
