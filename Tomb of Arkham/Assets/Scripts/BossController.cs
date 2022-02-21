@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossController : MonoBehaviour
 {
     //------------------------------------------------------
@@ -19,7 +20,11 @@ public class BossController : MonoBehaviour
     private int milestoneIndex = 0;
     private int anchorOffset = 1;
     private bool teleporting = false;
-    
+    private FoleyManager foleyManager;
+    private AudioClip attackSound;
+    private AudioClip deathSound;
+    private AudioClip teleportSound;
+
 
     private List<float> healthMilestones = new List<float>();
 
@@ -54,6 +59,10 @@ public class BossController : MonoBehaviour
         HandleHPMilestones();
     }
 
+    private void Start() {
+        HandleAudioSetup();
+    }
+
     private void Update()
     {
         HandleTeleport();
@@ -86,16 +95,44 @@ public class BossController : MonoBehaviour
     }
 
     //------------------------------------------------------
-    //                CUSTOM COMBAT FUNCTIONS
+    //                AUDIO FUNCTIONS
+    //------------------------------------------------------
+
+    private void HandleAudioSetup() {
+        foleyManager = FoleyManager.Instance;
+        attackSound = (AudioClip)Resources.Load("castSpell");
+        teleportSound = (AudioClip)Resources.Load("teleport");
+        deathSound = (AudioClip)Resources.Load("bossDeath");
+    }
+
+    IEnumerable HandleAttackSound() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(attackSound.name);
+    }
+
+    IEnumerable HandleTeleportSound() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(teleportSound.name);
+    }
+
+    IEnumerable HandleDeathSound() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(deathSound.name);
+    }
+
+    //------------------------------------------------------
+    //                COMBAT FUNCTIONS
     //------------------------------------------------------
     private void AttemptAttack() {
         if(target!=null && targetDetected) {
             // Look at target
             lookDirection = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
             transform.LookAt(lookDirection);
+            
 
             // Fire
             if(fireCountdown <= 0f) {
+                StartCoroutine("HandleAttackSound");    
                 Attack();
                 fireCountdown = 1f/fireRate;
             }
@@ -125,9 +162,11 @@ public class BossController : MonoBehaviour
     }
 
     //------------------------------------------------------
-    //                CUSTOM GENERAL FUNCTIONS
+    //                GENERAL FUNCTIONS
     //------------------------------------------------------
     private void BossDeath() {
+        StartCoroutine("HandleDeathSound");
+
         hiddenKey.SetActive(true);
         hiddenKey.transform.position = transform.position;
         Destroy(gameObject);
@@ -153,6 +192,8 @@ public class BossController : MonoBehaviour
             // Since boss starts on TPAnchor[0], skip over that index with anchorOffset. 
             if (!teleporting && currentHealth < healthMilestones[milestoneIndex])
             {
+                
+                StartCoroutine("HandleTeleportSound");
                 teleporting = true;
 
                 Vector3 nextTPLoc = tPAnchorController.GetSpecificAnchor(milestoneIndex + anchorOffset).position;

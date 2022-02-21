@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,17 +13,33 @@ public class LevelManager : MonoBehaviour
     #region
     public static LevelManager Instance;
     
+    // General
     [SerializeField] private Vector3 idlePosition;
     [SerializeField] private Vector3 currentLevelSpawnpoint;
     private Player player;
     private KnifeController knife;
     private Vector3 currentCheckpoint;
+    private bool readyToSpawn = false;
+    private bool gameComplete = false;
+
+    // Audio Related
+    [SerializeField] private AudioSource generalMusicSource;
+    private AudioSource currentMusicSource;
+    private FoleyManager foleyManager;
+    private AudioClip gameOverTransitionSound;
+    private AudioClip gameWinSound;
+
+    // Scene Related
     private int gameplaySceneIndex = 0;
     private int currentAreaInitialSceneIndex = 1;
     private int currentSceneIndex = 0;
     private bool sceneLoaded = false;
+
+    // Camera Related
     [SerializeField] private Camera backDropCamera;
     [SerializeField] private Camera playerCam;
+
+    // Menu Related
     private bool inMenu;
     [SerializeField] private Menu.MenuType startUpMenuType;
     private Menu previousMenu;
@@ -60,6 +79,9 @@ public class LevelManager : MonoBehaviour
     public bool GetSceneLoaded() {return sceneLoaded;}
     public void SetSceneLoaded(bool newValue) {sceneLoaded = newValue;}
 
+    public bool GetGameComplete() {return gameComplete;}
+    public void SetGameComplete(bool newValue) {gameComplete = newValue;}
+
     // List of Menus
     public List<Menu> GetMenuList() {return availableMenus;}
     public void SetMenuList(List<Menu> newList) {availableMenus = newList;}
@@ -85,10 +107,12 @@ public class LevelManager : MonoBehaviour
     private void Awake() {
         Instance = this;
         knife = KnifeController.Instance;    
+        currentMusicSource = generalMusicSource;
     }
 
     private void Start() {
         player = Player.Instance;
+        TogglePlayer(readyToSpawn);
         HandleMenuSetup(startUpMenuType);
     }
 
@@ -96,6 +120,35 @@ public class LevelManager : MonoBehaviour
         if(SceneManager.sceneCount == 1) {
             player.transform.position = idlePosition;
         }
+    }
+
+    //------------------------------------------------------
+    //                  AUDIO FUNCTIONS
+    //------------------------------------------------------
+
+    private void HandleFoleySetup() {
+        foleyManager = FoleyManager.Instance;
+        gameOverTransitionSound = (AudioClip)Resources.Load("gameOverTransition");
+        gameWinSound = (AudioClip)Resources.Load("gameWin");
+    }
+
+    IEnumerator HandleGameOverAudio() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(gameOverTransitionSound.name);
+    }
+
+    IEnumerator HandleGameWinAudio() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(gameWinSound.name);
+    }
+
+    public void HandleMusicSource(AudioSource newSource) {
+        if(currentMusicSource == generalMusicSource) {
+            
+            generalMusicSource.Pause();
+        }
+        currentMusicSource = newSource;
+        currentMusicSource.Play();
     }
 
     //------------------------------------------------------
@@ -120,8 +173,7 @@ public class LevelManager : MonoBehaviour
             }
             LoadScene(scenes[nextScene]);
             currentSceneIndex = nextScene;
-
-            sceneLoaded = !sceneLoaded;
+            SceneManager.sceneLoaded += LevelStartSetup;
         }  
     }
 
@@ -249,15 +301,19 @@ public class LevelManager : MonoBehaviour
         }
         ChangeMenu(previousMenu);
     }
-
+        
     public void HandleLevelCompletion() {
+        gameComplete = true;
+        StartCoroutine(HandleGameWinAudio());
         inMenu = true;
         ChangeMenu(SearchMenus(Menu.MenuType.WinScreen));
         ToggleBackdrop(inMenu);
         ToggleCamera(inMenu);
+        
     }
 
     public void HandleGameOver() {
+        StartCoroutine(HandleGameOverAudio());
         inMenu = true;
         ChangeMenu(SearchMenus(Menu.MenuType.LoseScreen));
         ToggleBackdrop(inMenu);
@@ -266,15 +322,12 @@ public class LevelManager : MonoBehaviour
 
     private void StartLevel(int nextLevelIndex) {
         sceneLoaded = false;
+        ChangeScene(nextLevelIndex);
         inMenu = false;
         if(Time.timeScale == 0) {
             Time.timeScale = 1;
         }
-        ChangeMenu(SearchMenus(Menu.MenuType.GeneralHud));
-        ChangeScene(nextLevelIndex);
-        ToggleBackdrop(inMenu);
-        ToggleCamera(inMenu);
-        PlayerSetup();
+        
     }
 
     private void ToggleCamera(bool currentlyInMenu) {
@@ -292,9 +345,18 @@ public class LevelManager : MonoBehaviour
         StartLevel(nextLevelIndex);
     }
 
-    private void PlayerSetup() {
+    private void TogglePlayer(bool status) {
+        player.gameObject.SetActive(status);
+    }
+
+    private void LevelStartSetup(Scene scene, LoadSceneMode mode) {
         ResetCheckpoint();
+        readyToSpawn = true;
+        TogglePlayer(readyToSpawn);
         player.transform.position = currentLevelSpawnpoint;
+        ChangeMenu(SearchMenus(Menu.MenuType.GeneralHud));
+        ToggleBackdrop(inMenu);
+        ToggleCamera(inMenu);
         sceneLoaded = true;
     }
 
@@ -306,7 +368,6 @@ public class LevelManager : MonoBehaviour
         ChangeMenu(SearchMenus(Menu.MenuType.GeneralHud));
         ToggleBackdrop(inMenu);
         ToggleCamera(inMenu);
-        PlayerSetup();
     }
 
     private void ResetCheckpoint() {

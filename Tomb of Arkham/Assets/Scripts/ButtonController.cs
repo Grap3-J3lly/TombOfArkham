@@ -35,6 +35,8 @@ public class ButtonController : MonoBehaviour
     private InputController inputController;
     private LevelManager levelManager;
     private GameObject thisObject;
+    private FoleyManager foleyManager;
+    private AudioClip buttonClick;
     private Vector3[] buttonCorners = new Vector3[4];
     private float max_X;
     private float max_Y;
@@ -51,6 +53,9 @@ public class ButtonController : MonoBehaviour
     public int GetToLevelNumber() {return toLevelNumber;}
     public void SetToLevelNumber(int newLevelNum) {toLevelNumber = newLevelNum;}
 
+    public GameObject GetThisObject() {return thisObject;}
+    public void SetGameObject(GameObject newObject) {thisObject = newObject;}
+
     //------------------------------------------------------
     //                  STANDARD FUNCTIONS
     //------------------------------------------------------
@@ -63,11 +68,12 @@ public class ButtonController : MonoBehaviour
 
     private void Start() {
         GetComponent<RectTransform>().GetWorldCorners(buttonCorners);
+        HandleAudioSetup();
         HandleWorldCorners();
     }
 
     private void Update() {
-        HandleOptions();
+        HideButtonCheck(levelManager.GetGameComplete());
     }
 
     private void OnEnable() {
@@ -82,6 +88,17 @@ public class ButtonController : MonoBehaviour
     //------------------------------------------------------
     //                  BUTTON FUNCTIONS
     //------------------------------------------------------
+
+    public void HideButtonCheck(bool complete) {
+        if(complete && this.buttonType == ButtonType.NextLevel) {
+            this.thisObject.SetActive(false);
+        }
+    }
+
+    private void HandleAudioSetup() {
+        foleyManager = FoleyManager.Instance;
+        buttonClick = (AudioClip)Resources.Load("singleButtonClick");
+    }
 
     private void HandleWorldCorners() {
         float[] xVals = new float[buttonCorners.Length];
@@ -102,20 +119,9 @@ public class ButtonController : MonoBehaviour
     private void WithinBounds(Vector2 pointToCheck) {
         if(pointToCheck.x >= min_X && pointToCheck.x <= max_X && pointToCheck.y >= min_Y && pointToCheck.y <= max_Y) 
         {
+            foleyManager.Play(buttonClick.name);
             levelManager.ChangeMenuByButton(this);
         }
     }
-
-    private bool IgnoreHudButtons() {
-        if(this.buttonType == ButtonType.Attack || this.buttonType == ButtonType.Jump) {
-            return true;
-        }
-        return false;
-    }
-
-    private void HandleOptions() {
-        
-    }
-
 
 }

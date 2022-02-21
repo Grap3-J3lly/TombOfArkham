@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class Player : MonoBehaviour
     //                  VARIABLES
     //------------------------------------------------------
     #region
+
+    // Audio Related
+    private FoleyManager foleyManager;
+    private AudioClip walkSound;
+    private AudioClip jumpStartSound;
+    private AudioClip jumpEndSound;
+    private AudioClip deathSound;
+    private AudioClip idolCollect;
+    [SerializeField] private float walkSoundSpeedOffset = .15f;
 
     // Event Related
     public event Action onDeathEvent;
@@ -95,6 +105,7 @@ public class Player : MonoBehaviour
 
     private void Start() {
         Time.timeScale = 1;
+        HandleAudioSetup();
     }
 
     private void Update()
@@ -152,6 +163,7 @@ public class Player : MonoBehaviour
 
     private void HandleIdolCollision(GameObject obj)
     {
+        StartCoroutine(HandleIdolAudio());
         idolCount++;
         Destroy(obj);
     }
@@ -164,7 +176,41 @@ public class Player : MonoBehaviour
     #endregion
 
     //------------------------------------------------------
-    //          CUSTOM COMBAT FUNCTIONS
+    //          AUDIO FUNCTIONS
+    //------------------------------------------------------
+
+    private void HandleAudioSetup() {
+        foleyManager = FoleyManager.Instance;
+        deathSound = (AudioClip)Resources.Load("deathSound");
+        walkSound = (AudioClip)Resources.Load("walk");
+        jumpStartSound = (AudioClip)Resources.Load("jumpStart");
+        jumpEndSound = (AudioClip)Resources.Load("jumpEnd");
+        idolCollect = (AudioClip)Resources.Load("idolPickup");
+    }
+
+    IEnumerator HandleMoveAudio(Vector3 currentVelocity) {
+        
+        yield return new WaitUntil(() => isMovePressed && currentVelocity.magnitude >= walkSoundSpeedOffset && foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(walkSound.name);
+        yield return new WaitForSeconds(2);
+    }
+
+    IEnumerator HandleJumpAudio() {
+        AudioSource audioSource = foleyManager.GetAudioSource();
+        yield return new WaitUntil(() => isJumpPressed && !isJumping);
+        foleyManager.Play(jumpStartSound.name);
+        yield return new WaitUntil(() => !isJumpPressed && !isJumping);
+        foleyManager.Play(jumpEndSound.name);
+        
+    }
+
+    IEnumerator HandleIdolAudio() {
+        foleyManager.Play(idolCollect.name);
+        yield return new WaitForSeconds(1);
+    }
+
+    //------------------------------------------------------
+    //          COMBAT FUNCTIONS
     //------------------------------------------------------
     #region
     private void OnAttack(InputAction.CallbackContext context)
@@ -201,7 +247,7 @@ public class Player : MonoBehaviour
     #endregion
 
     //------------------------------------------------------
-    //          CUSTOM MOVEMENT PHYSICS FUNCTIONS
+    //          MOVEMENT PHYSICS FUNCTIONS
     //------------------------------------------------------
     #region 
     private void OnMove(InputAction.CallbackContext context)
@@ -226,6 +272,7 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
+        StartCoroutine(HandleJumpAudio());
         if (!isJumping && charController.isGrounded && isJumpPressed)
         {
             isJumping = true;
@@ -276,7 +323,7 @@ public class Player : MonoBehaviour
 
 
     //------------------------------------------------------
-    //          CUSTOM GENERAL FUNCTIONS
+    //          GENERAL FUNCTIONS
     //------------------------------------------------------
     #region
 
@@ -292,6 +339,7 @@ public class Player : MonoBehaviour
 
     public void HandleDeath()
     {
+        foleyManager.Play(deathSound.name);
         handlingDeath = true;
         transform.position = levelManager.GetCurrentCheckpoint();
         livesRemaining -= 1;
@@ -348,7 +396,9 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement() {
-        charController.Move(horizontalForce * Time.deltaTime * moveSpeed);
+        Vector3 currentMovement = horizontalForce * Time.deltaTime * moveSpeed;
+        charController.Move(currentMovement);
+        StartCoroutine(HandleMoveAudio(currentMovement));
     }
 
     private void FallToDeathCheck() {

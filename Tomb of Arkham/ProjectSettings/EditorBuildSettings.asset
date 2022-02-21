@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Demo/Scenes/Menu.unity
     guid: b8bfcfa859ccfa447ac036b575bf8a68
   - enabled: 0
-    path: Assets/Demo/Scenes/Drawing.unity
+    path: Assets/Audio/VOiD1 Gaming - MONOTONE (Demo)/Scenes/MONOTONE (Demo).unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/Demo/Scenes/Rolling.unity

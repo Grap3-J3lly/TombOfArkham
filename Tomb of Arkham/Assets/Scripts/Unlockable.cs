@@ -12,6 +12,8 @@ public class Unlockable : MonoBehaviour
     [SerializeField] private int requiredKeyCount = 1;
     private Player player;
     private LevelManager levelManager;    
+    private FoleyManager foleyManager;
+    private AudioClip openDoorSound;
 
     //------------------------------------------------------
     //                  GETTERS/SETTERS
@@ -23,10 +25,14 @@ public class Unlockable : MonoBehaviour
     //------------------------------------------------------
     //                 STANDARD FUNCTIONS
     //------------------------------------------------------
-    void Awake()
+    private void Awake()
     {
         levelManager = LevelManager.Instance;
         player = Player.Instance;        
+    }
+
+    private void Start() {
+        HandleAudioSetup();
     }
 
     //------------------------------------------------------
@@ -38,10 +44,25 @@ public class Unlockable : MonoBehaviour
     }
 
     //------------------------------------------------------
-    //                 CUSTOM GENERAL FUNCTIONS
+    //                 AUDIO FUNCTIONS
+    //------------------------------------------------------
+
+    private void HandleAudioSetup() {
+        foleyManager = FoleyManager.Instance;
+        openDoorSound = (AudioClip)Resources.Load("openCloseDoor");
+    }
+
+    IEnumerator HandleOpenDoorSound() {
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(openDoorSound.name);
+    }
+
+    //------------------------------------------------------
+    //                 GENERAL FUNCTIONS
     //------------------------------------------------------
     private void Unlock() {
         if(player.GetIdolCount() == requiredKeyCount) {
+            StartCoroutine(HandleOpenDoorSound());
             player.SetIdolCount(0);
             levelManager.HandleLevelCompletion();
         }

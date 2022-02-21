@@ -16,6 +16,7 @@ public class LevelSetup : MonoBehaviour
     LevelManager levelManager;
     [SerializeField] LevelType thisLevelType;
     [SerializeField] Vector3 playerSpawnLocation;
+    [SerializeField] AudioSource levelMusicSource;
     
     // Normal Related
 
@@ -52,6 +53,7 @@ public class LevelSetup : MonoBehaviour
     private void Awake() {
         player = Player.Instance;
         levelManager = LevelManager.Instance;
+        levelManager.HandleMusicSource(levelMusicSource);
         HandlePlayerSpawn();
 
         HandleBossLevelType();
