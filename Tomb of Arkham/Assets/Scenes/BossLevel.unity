@@ -3397,10 +3397,12 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   hiddenKey: {fileID: 792254825}
+  fireRateOffset: 1
   projectile: {fileID: 6519759645988298203, guid: c3ba5f63597104f49a82d64158100569, type: 3}
   attackOrigin: {fileID: 649265006}
   bulletDamage: 10
   fireRate: 0.125
+  fireCountdown: 0
 --- !u!54 &831935531
 Rigidbody:
   m_ObjectHideFlags: 0

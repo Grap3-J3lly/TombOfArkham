@@ -42,6 +42,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineInspector
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
@@ -99,11 +100,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1860}
     - Class: 114
-      Script: {instanceID: 5064}
+      Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5182}
+      Script: {instanceID: 5184}
     - Class: 114
-      Script: {instanceID: 5436}
+      Script: {instanceID: 5438}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -180,43 +181,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2236}
     - Class: 114
-      Script: {instanceID: 2474}
+      Script: {instanceID: 2246}
     - Class: 114
-      Script: {instanceID: 2632}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2648}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 2650}
     - Class: 114
-      Script: {instanceID: 2852}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 3002}
+      Script: {instanceID: 2854}
     - Class: 114
-      Script: {instanceID: 3270}
+      Script: {instanceID: 3004}
     - Class: 114
-      Script: {instanceID: 3626}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 3658}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 3660}
     - Class: 114
-      Script: {instanceID: 4124}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 4496}
+      Script: {instanceID: 4126}
     - Class: 114
-      Script: {instanceID: 4518}
+      Script: {instanceID: 4498}
     - Class: 114
-      Script: {instanceID: 4610}
+      Script: {instanceID: 4520}
     - Class: 114
-      Script: {instanceID: 4660}
+      Script: {instanceID: 4612}
     - Class: 114
-      Script: {instanceID: 4896}
+      Script: {instanceID: 4662}
     - Class: 114
-      Script: {instanceID: 5006}
+      Script: {instanceID: 4898}
     - Class: 114
-      Script: {instanceID: 5220}
+      Script: {instanceID: 5008}
     - Class: 114
-      Script: {instanceID: 188750}
+      Script: {instanceID: 5222}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -291,9 +292,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 5436}
+      Script: {instanceID: 5438}
     - Class: 114
-      Script: {instanceID: 5440}
+      Script: {instanceID: 5442}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -485,6 +486,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: b0a1ef2359fd00e404b776ff91b6c81c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VolumeController
   - hash:
       serializedVersion: 2
       Hash: 699619b86d9359741a4f58540298c80b
@@ -1201,7 +1208,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: cc19ccb5109adcd8a9e44f0903b8d75b
+      Hash: 3cb3b01722dafdceca083f5742c5b10c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossController
@@ -1343,16 +1350,10 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CustomDeviceUsages
-  - hash:
-      serializedVersion: 2
-      Hash: b0a1ef2359fd00e404b776ff91b6c81c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: VolumeController
   platform: 13
   scenePathNames:
   - Assets/Scenes/Gameplay.unity
   - Assets/Scenes/NormalLevel.unity
   - Assets/Scenes/BossLevel.unity
   playerPath: D:/Users/James/Documents/Coding/Git/Reposities/TombOfArkham/Tomb of
-    Arkham/Builds/MVPEnough.apk
+    Arkham/Builds/MVPEnough2.apk

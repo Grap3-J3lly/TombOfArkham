@@ -33,6 +33,8 @@ public class BossController : MonoBehaviour
     private List<float> healthMilestones = new List<float>();
 
     // Combat Related
+
+    [SerializeField] private float fireRateOffset;
     private Transform target;
     private bool targetDetected = false;
     private Vector3 lookDirection;
@@ -40,7 +42,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform attackOrigin;
     [SerializeField] private float bulletDamage;
     [SerializeField] private float fireRate = 1f;
-    private float fireCountdown = 0f;
+    [SerializeField] private float fireCountdown = 0f;
     private bool attacking = false;
     private List<GameObject> allProjectiles = new List<GameObject>();
 
@@ -82,6 +84,9 @@ public class BossController : MonoBehaviour
             Destroy(objs);
         }
         allProjectiles.Clear();
+        target = null;
+        targetDetected = false;
+        attacking = false;
     }
 
     //------------------------------------------------------
@@ -145,20 +150,28 @@ public class BossController : MonoBehaviour
 
             // Fire
             if(fireCountdown <= 0f) {
-                StartCoroutine(PlayAttackSound());
-                Attack();
+                attacking = true;
+                StartCoroutine(AttackAdjustment());
                 
-                fireCountdown = (float)animator.GetCurrentAnimatorStateInfo(1).length * 10f;//1f/fireRate;
+                
+                
+                fireCountdown = 1f/fireRate;
                 //Debug.Log(fireCountdown);
             }
             fireCountdown -= Time.deltaTime;
-            Debug.Log(fireCountdown);
+            //Debug.Log(fireCountdown);
             return;
         }
     }
 
-    private void Attack() {
+    IEnumerator AttackAdjustment() {
         attacking = true;
+        yield return new WaitForSeconds(fireRateOffset);
+        Attack();
+    }
+
+    private void Attack() {
+        StartCoroutine(PlayAttackSound());
         GameObject newProjectile = (GameObject)Instantiate(projectile, attackOrigin.position, attackOrigin.rotation);
         allProjectiles.Add(newProjectile);
         ProjectileController currentProjectile = newProjectile.GetComponent<ProjectileController>();
@@ -193,7 +206,7 @@ public class BossController : MonoBehaviour
         else if(!attacking && isAttacking) {
             animator.SetBool("isAttacking", false);
         }
-        else if(!isAlive && currentHealth > 0) {
+        if(!isAlive && currentHealth > 0) {
             animator.SetBool("alive", true);
         }
         else if(isAlive && currentHealth <= 0) {
