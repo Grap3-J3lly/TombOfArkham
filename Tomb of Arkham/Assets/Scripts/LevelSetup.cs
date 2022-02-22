@@ -11,12 +11,15 @@ public class LevelSetup : MonoBehaviour
         Normal,
         Boss
     }
-    
+    [SerializeField] LevelType thisLevelType;
+
+    // General
     Player player;
     LevelManager levelManager;
-    [SerializeField] LevelType thisLevelType;
-    [SerializeField] Vector3 playerSpawnLocation;
-    [SerializeField] AudioSource levelMusicSource;
+    
+    [SerializeField] private Vector3 playerSpawnLocation;
+    [SerializeField] private AudioSource levelMusicSource;
+    [SerializeField] private int idolsNeeded = 1;
     
     // Normal Related
 
@@ -33,6 +36,9 @@ public class LevelSetup : MonoBehaviour
 
     public LevelType GetThisLevelType() {return thisLevelType;}
     public void SetThisLevelType(LevelType newType) {thisLevelType = newType;}
+
+    public int GetIdolsNeeded() {return idolsNeeded;}
+    public void SetIdolsNeeded(int newAmount) {idolsNeeded = newAmount;}
 
     // Normal Related
 
@@ -58,11 +64,16 @@ public class LevelSetup : MonoBehaviour
 
         HandleBossLevelType();
     }
+
+    private void Start() {
+        player.SetIdolsRemaining(idolsNeeded);
+    }
     
     //------------------------------------------------------
     //                  CUSTOM GENERAL FUNCTIONS
     //------------------------------------------------------
     // Player Related
+
     private void HandlePlayerSpawn() {
         levelManager.SetCurrentLevelSpawnpoint(playerSpawnLocation);
         levelManager.SetCurrentCheckpoint(playerSpawnLocation);

@@ -18,6 +18,10 @@ public class TPAnchorController : MonoBehaviour
     public Transform GetSpecificAnchor(int index){return childrenAnchors[index];}
     public void SetSpecificAnchor(int index, Transform newAnchor){childrenAnchors[index] = newAnchor;}
 
+    public void AddAnchor(Transform newAnchor) {childrenAnchors.Add(newAnchor);}
+    
+    public void RemoveSpecificAnchor(Transform transform) {childrenAnchors.Remove(transform);}
+
     //------------------------------------------------------
     //                  STANDARD FUNCTIONS
     //------------------------------------------------------

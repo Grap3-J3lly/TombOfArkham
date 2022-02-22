@@ -2727,6 +2727,7 @@ MonoBehaviour:
   thisLevelType: 0
   playerSpawnLocation: {x: 31.45, y: 1, z: -17.58}
   levelMusicSource: {fileID: 1108827042}
+  idolsNeeded: 1
   bossController: {fileID: 0}
   tPAnchorController: {fileID: 0}
   initialSpawnLocIndex: 0
@@ -11190,6 +11191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 43244077}
     m_Modifications:
+    - target: {fileID: 2112894315, guid: d06c93a0a11f17844bc52105b451d08f, type: 3}
+      propertyPath: levelSetup
+      value: 
+      objectReference: {fileID: 638859156}
     - target: {fileID: 5395847125468957915, guid: d06c93a0a11f17844bc52105b451d08f, type: 3}
       propertyPath: m_Convex
       value: 1

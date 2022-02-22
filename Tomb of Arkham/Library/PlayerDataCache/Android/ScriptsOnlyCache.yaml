@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - BossController
     - ButtonController
     - CheckPoint
+    - FoleyManager
     - InputController
     - KnifeController
     - LevelManager
@@ -14,6 +15,7 @@ ScriptsOnlyBuild:
     - SimpleSampleCharacterControl
     - TPAnchorController
     - Unlockable
+    - VolumeController
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.EnhancedTouch.TouchSimulation
     - UnityEngine.InputSystem.InputActionAsset
@@ -37,8 +39,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -49,6 +53,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
   sceneClasses:
     Assets/Scenes/BossLevel.unity:
     - Class: 1
@@ -73,7 +78,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
@@ -82,20 +95,18 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1856}
+      Script: {instanceID: 1860}
     - Class: 114
-      Script: {instanceID: 5058}
+      Script: {instanceID: 5064}
     - Class: 114
-      Script: {instanceID: 5176}
+      Script: {instanceID: 5182}
     - Class: 114
-      Script: {instanceID: 5430}
+      Script: {instanceID: 5436}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
-      Script: {instanceID: 0}
-    - Class: 136
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
@@ -138,6 +149,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 90
@@ -151,51 +166,57 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1510}
+      Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 1566}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1702}
+      Script: {instanceID: 1706}
     - Class: 114
-      Script: {instanceID: 1876}
+      Script: {instanceID: 1770}
     - Class: 114
-      Script: {instanceID: 2090}
+      Script: {instanceID: 1880}
     - Class: 114
-      Script: {instanceID: 2232}
+      Script: {instanceID: 2094}
     - Class: 114
-      Script: {instanceID: 2470}
+      Script: {instanceID: 2236}
     - Class: 114
-      Script: {instanceID: 2628}
+      Script: {instanceID: 2474}
     - Class: 114
-      Script: {instanceID: 2644}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2802}
+      Script: {instanceID: 2648}
     - Class: 114
-      Script: {instanceID: 2848}
+      Script: {instanceID: 2806}
     - Class: 114
-      Script: {instanceID: 2998}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 3266}
+      Script: {instanceID: 3002}
     - Class: 114
-      Script: {instanceID: 3624}
+      Script: {instanceID: 3270}
     - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 3812}
+      Script: {instanceID: 3658}
     - Class: 114
-      Script: {instanceID: 4120}
+      Script: {instanceID: 3814}
     - Class: 114
-      Script: {instanceID: 4492}
+      Script: {instanceID: 4124}
     - Class: 114
-      Script: {instanceID: 4514}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 4656}
+      Script: {instanceID: 4518}
     - Class: 114
-      Script: {instanceID: 4890}
+      Script: {instanceID: 4610}
     - Class: 114
-      Script: {instanceID: 5000}
+      Script: {instanceID: 4660}
     - Class: 114
-      Script: {instanceID: 5214}
+      Script: {instanceID: 4896}
+    - Class: 114
+      Script: {instanceID: 5006}
+    - Class: 114
+      Script: {instanceID: 5220}
+    - Class: 114
+      Script: {instanceID: 188750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -212,6 +233,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -219,6 +244,14 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
@@ -245,6 +278,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 95
@@ -252,11 +289,11 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 5430}
+      Script: {instanceID: 5436}
     - Class: 114
-      Script: {instanceID: 5434}
+      Script: {instanceID: 5440}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -270,10 +307,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: 040dd48e3a027d5424519a5fa2009df4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
+  - hash:
+      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 69415240821be7986b27e72bf9609a30
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: bcaee4c2a83047257b5f47d6ed264b75
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -300,7 +355,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: ad70f6a454be1054a92e0cba56fec5c8
+      Hash: 78ce873118e2a884b5ed827b1e63a04c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSetup
@@ -318,19 +373,13 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: bcaee4c2a83047257b5f47d6ed264b75
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: beb4e4f02eb5eeacc9db303c646d1095
+      Hash: 46d0fcaefc608b4d64973702fe4145c8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -480,7 +529,7 @@ ScriptsOnlyBuild:
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: c1c7cae7570f9114ede670c61a654013
+      Hash: 8afb68f0b6babf42d568e992178b1fa1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -678,12 +727,6 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
-      Hash: 69415240821be7986b27e72bf9609a30
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
       Hash: fe2d355deb0ca31d59a0a7cf4d141fc3
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -876,6 +919,12 @@ ScriptsOnlyBuild:
     className: TMP_TextEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 228252ffc7f1601334fd0e9e3894f867
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RandomMusic
+  - hash:
+      serializedVersion: 2
       Hash: c042aadbc09f16545c490ddfea25c79e
     assemblyName: Unity.Polybrush.dll
     namespaceName: UnityEngine.Polybrush
@@ -1026,12 +1075,6 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 040dd48e3a027d5424519a5fa2009df4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -1042,6 +1085,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 7d71c6ac3b1db75f3799f45080e12660
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FoleyManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1242,7 +1291,7 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: c7c9d10f8d79ef5ea11001896748a676
+      Hash: 61f02e0eb0e9640cf93d39c5224006ec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unlockable
@@ -1294,10 +1343,16 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CustomDeviceUsages
+  - hash:
+      serializedVersion: 2
+      Hash: b0a1ef2359fd00e404b776ff91b6c81c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VolumeController
   platform: 13
   scenePathNames:
   - Assets/Scenes/Gameplay.unity
   - Assets/Scenes/NormalLevel.unity
   - Assets/Scenes/BossLevel.unity
   playerPath: D:/Users/James/Documents/Coding/Git/Reposities/TombOfArkham/Tomb of
-    Arkham/Builds/CompleteMenus.apk
+    Arkham/Builds/MVPEnough.apk

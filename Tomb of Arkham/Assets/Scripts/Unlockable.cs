@@ -9,18 +9,12 @@ public class Unlockable : MonoBehaviour
     //------------------------------------------------------
     //                  VARIABLES
     //------------------------------------------------------
-    [SerializeField] private int requiredKeyCount = 1;
+    
     private Player player;
     private LevelManager levelManager;    
     private FoleyManager foleyManager;
     private AudioClip openDoorSound;
-
-    //------------------------------------------------------
-    //                  GETTERS/SETTERS
-    //------------------------------------------------------
-
-    public int GetReqKeyCount() {return requiredKeyCount;}
-    public void SetReqKeyCount(int newCount) {requiredKeyCount = newCount;}
+    [SerializeField] private LevelSetup levelSetup;
 
     //------------------------------------------------------
     //                 STANDARD FUNCTIONS
@@ -61,9 +55,8 @@ public class Unlockable : MonoBehaviour
     //                 GENERAL FUNCTIONS
     //------------------------------------------------------
     private void Unlock() {
-        if(player.GetIdolCount() == requiredKeyCount) {
+        if(player.GetIdolsRemaining() == 0) {
             StartCoroutine(HandleOpenDoorSound());
-            player.SetIdolCount(0);
             levelManager.HandleLevelCompletion();
         }
     }

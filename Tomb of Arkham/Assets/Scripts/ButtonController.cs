@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ButtonController : MonoBehaviour
@@ -14,7 +16,7 @@ public class ButtonController : MonoBehaviour
         GameVolumeSliderControl,
         MusicToggle,
         MusicVolumeSliderControl,
-        SoungToggle,
+        SoundToggle,
         SoundVolumeSliderControl,
         InvertControlsToggle,
         MainMenu,
@@ -27,6 +29,14 @@ public class ButtonController : MonoBehaviour
         Resume
     }
     [SerializeField] private ButtonType buttonType;
+    private ButtonType[] optionButtons = {
+        ButtonType.GameVolumeSliderControl,
+        ButtonType.MusicToggle,
+        ButtonType.MusicVolumeSliderControl,
+        ButtonType.SoundToggle,
+        ButtonType.SoundVolumeSliderControl,
+        ButtonType.InvertControlsToggle
+    };
 
     //------------------------------------------------------
     //                   VARIABLES
@@ -35,6 +45,7 @@ public class ButtonController : MonoBehaviour
     private InputController inputController;
     private LevelManager levelManager;
     private GameObject thisObject;
+    private AudioSource musicSource;
     private FoleyManager foleyManager;
     private AudioClip buttonClick;
     private Vector3[] buttonCorners = new Vector3[4];
@@ -43,6 +54,9 @@ public class ButtonController : MonoBehaviour
     private float min_X;
     private float min_Y;
     [SerializeField] private int toLevelNumber;
+    private Sprite toggleOnImage;
+    private Sprite toggleOffImage;
+    private Sprite slideControlImage;
 
     //------------------------------------------------------
     //                   GETTERS/SETTERS
@@ -70,6 +84,8 @@ public class ButtonController : MonoBehaviour
         GetComponent<RectTransform>().GetWorldCorners(buttonCorners);
         HandleAudioSetup();
         HandleWorldCorners();
+        HandleSpriteSetup();
+        HandleOptionSetup();
     }
 
     private void Update() {
@@ -88,6 +104,16 @@ public class ButtonController : MonoBehaviour
     //------------------------------------------------------
     //                  BUTTON FUNCTIONS
     //------------------------------------------------------
+    private void HandleOptionSetup() {
+        
+    }
+    private void HandleSpriteSetup() {
+        if(Array.IndexOf(optionButtons, this.buttonType) != -1) {
+            toggleOnImage = Resources.Load<Sprite>("Sprites/check");
+            toggleOffImage = Resources.Load<Sprite>("Sprites/blank");
+            slideControlImage = Resources.Load<Sprite>("Sprites/slideControl");
+        }
+    }
 
     public void HideButtonCheck(bool complete) {
         if(complete && this.buttonType == ButtonType.NextLevel) {
@@ -96,6 +122,7 @@ public class ButtonController : MonoBehaviour
     }
 
     private void HandleAudioSetup() {
+        musicSource = levelManager.GetCurrentMusicSource();
         foleyManager = FoleyManager.Instance;
         buttonClick = (AudioClip)Resources.Load("singleButtonClick");
     }
@@ -119,9 +146,53 @@ public class ButtonController : MonoBehaviour
     private void WithinBounds(Vector2 pointToCheck) {
         if(pointToCheck.x >= min_X && pointToCheck.x <= max_X && pointToCheck.y >= min_Y && pointToCheck.y <= max_Y) 
         {
-            foleyManager.Play(buttonClick.name);
+            HandleButtonPress();
+        }
+    }
+
+    private void HandleButtonPress() {
+        foleyManager.Play(buttonClick.name);
+        if(Array.IndexOf(optionButtons, this.buttonType) == -1) {
             levelManager.ChangeMenuByButton(this);
         }
+        else {
+            HandleOptionButtons();
+        }
+        
+    }
+
+    private void HandleOptionButtons() {
+        switch(this.buttonType) {
+            case ButtonType.GameVolumeSliderControl:
+            break;
+            case ButtonType.MusicToggle:
+            ToggleAudioSource(musicSource);
+            break;
+            case ButtonType.MusicVolumeSliderControl:
+            break;
+            case ButtonType.SoundToggle:
+            ToggleAudioSource(foleyManager.GetAudioSource());
+            break;
+            case ButtonType.SoundVolumeSliderControl:
+            break;
+        }
+    }
+
+    private void ToggleImage(bool status) {
+        Image currentButtonImage = GetComponent<Image>();
+        if(status) {
+            currentButtonImage.sprite = toggleOnImage;
+        }
+        else {
+            currentButtonImage.sprite = toggleOffImage;
+        }
+    }
+
+    private void ToggleAudioSource(AudioSource thisSource) {
+        bool status = thisSource.gameObject.activeSelf;
+        status = !status;
+        thisSource.gameObject.SetActive(status);
+        ToggleImage(status);
     }
 
 }

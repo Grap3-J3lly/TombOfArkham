@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Demo/Scenes/Menu.unity
-    guid: b8bfcfa859ccfa447ac036b575bf8a68
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Audio/VOiD1 Gaming - MONOTONE (Demo)/Scenes/MONOTONE (Demo).unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Demo/Scenes/Rolling.unity
-    guid: 890fa54e762862e4baa18fa9e56904ee
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Demo/Scenes/Swiping.unity
-    guid: bc7ad4ee5e11ac64fba73a3be6d0b580
-  - enabled: 0
-    path: Assets/Demo/Scenes/Tapping.unity
-    guid: 5cbd551b16f2a584a946e64452f064f5
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: e497b070b0bc84d47a867f9af3be4d42

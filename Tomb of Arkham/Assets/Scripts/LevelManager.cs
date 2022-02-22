@@ -16,11 +16,13 @@ public class LevelManager : MonoBehaviour
     // General
     [SerializeField] private Vector3 idlePosition;
     [SerializeField] private Vector3 currentLevelSpawnpoint;
+    [SerializeField] private int idolPointValue;
     private Player player;
     private KnifeController knife;
     private Vector3 currentCheckpoint;
     private bool readyToSpawn = false;
     private bool gameComplete = false;
+    private int currentScore = 0;
 
     // Audio Related
     [SerializeField] private AudioSource generalMusicSource;
@@ -30,6 +32,7 @@ public class LevelManager : MonoBehaviour
     private AudioClip gameWinSound;
 
     // Scene Related
+    [SerializeField] private int finalLevelIndex = 2;
     private int gameplaySceneIndex = 0;
     private int currentAreaInitialSceneIndex = 1;
     private int currentSceneIndex = 0;
@@ -59,7 +62,8 @@ public class LevelManager : MonoBehaviour
         "Level End",
         "Hazard",
         "Checkpoint",
-        "Environment"
+        "Environment",
+        "Boss"
     };
     #endregion
 
@@ -74,6 +78,12 @@ public class LevelManager : MonoBehaviour
     public Vector3 GetCurrentCheckpoint() {return currentCheckpoint;}
     public void SetCurrentCheckpoint(Vector3 newValue) {currentCheckpoint = newValue;}
 
+    public int GetCurrentScore() {return currentScore;}
+    public void SetCurrentScore(int value) {currentScore = value;}
+    
+    public int GetIdolPointValue() {return idolPointValue;}
+    public void SetIdolPointValue(int amount) {idolPointValue = amount;}
+
     public Menu GetBackdrop() {return backDrop;}
     public void SetBackdrop(Menu newBackdrop) {backDrop = newBackdrop;}
     public bool GetSceneLoaded() {return sceneLoaded;}
@@ -81,6 +91,12 @@ public class LevelManager : MonoBehaviour
 
     public bool GetGameComplete() {return gameComplete;}
     public void SetGameComplete(bool newValue) {gameComplete = newValue;}
+
+    public AudioSource GetCurrentMusicSource() {return currentMusicSource;}
+    public void SetMusicSource(AudioSource newSource) {currentMusicSource = newSource;}
+
+    public Menu GetCurrentMenu() {return currentMenu;}
+    public void SetCurrentMenu(Menu newMenu) {currentMenu = newMenu;}
 
     // List of Menus
     public List<Menu> GetMenuList() {return availableMenus;}
@@ -114,6 +130,7 @@ public class LevelManager : MonoBehaviour
         player = Player.Instance;
         TogglePlayer(readyToSpawn);
         HandleMenuSetup(startUpMenuType);
+        HandleFoleySetup();
     }
 
     private void Update() {
@@ -133,8 +150,9 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator HandleGameOverAudio() {
-        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        //yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
         foleyManager.Play(gameOverTransitionSound.name);
+        yield return new WaitForSeconds(1);
     }
 
     IEnumerator HandleGameWinAudio() {
@@ -275,6 +293,7 @@ public class LevelManager : MonoBehaviour
         if(SceneManager.sceneCount > 1) {
             UnloadScene(scenes[currentSceneIndex]);
             currentSceneIndex = 0;
+            currentScore = 0;
         }
     }
 
@@ -303,7 +322,10 @@ public class LevelManager : MonoBehaviour
     }
         
     public void HandleLevelCompletion() {
-        gameComplete = true;
+        if(currentSceneIndex == finalLevelIndex) {
+            currentMusicSource.Pause();
+            gameComplete = true;
+        }
         StartCoroutine(HandleGameWinAudio());
         inMenu = true;
         ChangeMenu(SearchMenus(Menu.MenuType.WinScreen));
@@ -327,7 +349,6 @@ public class LevelManager : MonoBehaviour
         if(Time.timeScale == 0) {
             Time.timeScale = 1;
         }
-        
     }
 
     private void ToggleCamera(bool currentlyInMenu) {
@@ -355,6 +376,7 @@ public class LevelManager : MonoBehaviour
         TogglePlayer(readyToSpawn);
         player.transform.position = currentLevelSpawnpoint;
         ChangeMenu(SearchMenus(Menu.MenuType.GeneralHud));
+        StartCoroutine(ResetHudText());
         ToggleBackdrop(inMenu);
         ToggleCamera(inMenu);
         sceneLoaded = true;
@@ -362,16 +384,32 @@ public class LevelManager : MonoBehaviour
 
     public void RestartGame() {
         sceneLoaded = false;
+        gameComplete = false;
+        currentScore = 0;
         ChangeScene(currentAreaInitialSceneIndex);
         HandleResume();
         inMenu = false;
         ChangeMenu(SearchMenus(Menu.MenuType.GeneralHud));
+        StartCoroutine(ResetHudText());
         ToggleBackdrop(inMenu);
         ToggleCamera(inMenu);
     }
 
+    IEnumerator ResetHudText() {
+        yield return new WaitUntil(() => currentMenu.GetMenuType() == Menu.MenuType.GeneralHud);
+        currentMenu.HandleTextUpdate(Menu.TextSectionType.LifeCount, player.GetLivesRemaining());
+        currentMenu.HandleTextUpdate(Menu.TextSectionType.IdolCount, player.GetIdolsRemaining());
+        currentMenu.HandleTextUpdate(Menu.TextSectionType.Score, currentScore);
+    }
+
     private void ResetCheckpoint() {
         currentCheckpoint = currentLevelSpawnpoint;
+    }
+
+    public void IncreaseScore() {
+        currentScore += idolPointValue;
+        currentMenu.HandleTextUpdate(Menu.TextSectionType.Score, currentScore);
+        currentMenu.HandleTextUpdate(Menu.TextSectionType.IdolCount, player.GetIdolsRemaining());
     }
 
     #endregion

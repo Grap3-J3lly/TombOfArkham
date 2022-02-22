@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
@@ -21,9 +20,22 @@ public class Menu : MonoBehaviour
     }
 
     [SerializeField] private MenuType menuType;
-    LevelManager levelManager;
-    GameObject thisObject;
-    InputController inputController;
+
+    public enum TextSectionType {
+        Score,
+        IdolCount,
+        LifeCount
+    }
+
+    private TextSectionType currentType;
+
+    private LevelManager levelManager;
+    private Player player;
+    private GameObject thisObject;
+    private InputController inputController;
+    private GameObject scoreSection;
+    private GameObject idolCountSection;
+    private GameObject lifeCountSection;
 
     //------------------------------------------------------
     //               GETTERS/SETTERS
@@ -33,7 +45,7 @@ public class Menu : MonoBehaviour
     public void SetMenuType(MenuType newType) {menuType = newType;}
 
     //------------------------------------------------------
-    //               SHOW/HIDE FUNCTIONS
+    //               GENERAL FUNCTIONS
     //------------------------------------------------------
 
     public void ActivateMenu(MenuType showThisType) {
@@ -46,10 +58,6 @@ public class Menu : MonoBehaviour
             thisObject.SetActive(false) ;
         }
     }
-
-    //------------------------------------------------------
-    //               CUSTOM GENERAL FUNCTIONS
-    //------------------------------------------------------
 
     private void CreateMenuList() {
         if(menuType != MenuType.Backdrop) {
@@ -64,24 +72,77 @@ public class Menu : MonoBehaviour
         levelManager.SetBackdrop(this);
     }
 
+    public void HandleTextUpdate(TextSectionType thisType, int amount) {
+        switch(thisType) {
+            case TextSectionType.Score: 
+            scoreSection.GetComponent<TMP_Text>().text = "Score: " + amount;
+            break;
+            case TextSectionType.IdolCount:
+            idolCountSection.GetComponent<TMP_Text>().text = "Idols Remaining: " + amount;
+            break;
+            case TextSectionType.LifeCount:
+            lifeCountSection.GetComponent<TMP_Text>().text = "Lives Remaining: " + amount;
+            break;
+        }
+    }
+
+    private void HandleScoreUpdate(int amount) {
+
+    }
+
+    private void HandleIdolUpdate(int idolCount) {
+
+    }
+
+    private void HandleLivesUpdate(int lifeCount) {
+
+    }
+
+    private void GetInfoSection() {
+        if(this.menuType == MenuType.GeneralHud) {
+            Transform tempTransform = GetComponent<RectTransform>();
+            int childCount = tempTransform.childCount;
+            for(int index = 0; index < childCount; index++) {
+                if(tempTransform.GetChild(index).gameObject.name == "Info") {
+                    GetTextSections(tempTransform.GetChild(index));
+                }
+            }
+        }
+    }
+
+    private void GetTextSections(Transform parentTransform) {
+        int childCount = parentTransform.childCount;
+        for(int index = 0; index < childCount; index++) {
+            if(parentTransform.GetChild(index).gameObject.name == "Score") {
+                scoreSection = parentTransform.GetChild(index).gameObject;
+                
+            }
+            if(parentTransform.GetChild(index).gameObject.name == "IdolCount") {
+                idolCountSection = parentTransform.GetChild(index).gameObject;
+            }
+            if(parentTransform.GetChild(index).gameObject.name == "LifeCount") {
+                lifeCountSection = parentTransform.GetChild(index).gameObject;
+            }
+        }
+    }
+
     //------------------------------------------------------
     //               STANDARD FUNCTIONS
     //------------------------------------------------------
 
     private void Awake() {
         levelManager = LevelManager.Instance;
+        player = Player.Instance;
         CreateMenuList();
         thisObject = GetComponent<RectTransform>().gameObject;
-        //inputController = InputController.Instance;
+    }
+
+    private void Start() {
+        GetInfoSection();
     }
 
     private void Update() {
         
     }
-
-    //------------------------------------------------------
-    //               INPUT CONTROL FUNCTIONS
-    //------------------------------------------------------
-
     
 }

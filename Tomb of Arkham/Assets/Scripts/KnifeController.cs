@@ -50,7 +50,7 @@ public class KnifeController : MonoBehaviour
     //------------------------------------------------------
 
     private void OnTriggerEnter(Collider thing) {
-        if(thing.gameObject.name == "Boss Object") {
+        if(thing.gameObject.tag == "Boss") {
             StartCoroutine(HandleSwordHit());
             thing.gameObject.GetComponent<BossController>().HurtBoss(knifeDamage);
         }

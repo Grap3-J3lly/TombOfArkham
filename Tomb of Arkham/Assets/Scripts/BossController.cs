@@ -25,6 +25,10 @@ public class BossController : MonoBehaviour
     private AudioClip deathSound;
     private AudioClip teleportSound;
 
+    private GameObject cupNoFireObject;
+    private GameObject cupFireObject;
+    private GameObject currentAnchor;
+    private Animator animator;
 
     private List<float> healthMilestones = new List<float>();
 
@@ -37,6 +41,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private float bulletDamage;
     [SerializeField] private float fireRate = 1f;
     private float fireCountdown = 0f;
+    private bool attacking = false;
     private List<GameObject> allProjectiles = new List<GameObject>();
 
 
@@ -60,12 +65,16 @@ public class BossController : MonoBehaviour
     }
 
     private void Start() {
+        HandleAnchorSetup();
+        SpawnLitAnchor();
         HandleAudioSetup();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         HandleTeleport();
+        HandleAnimations();
     }
 
     private void DeathEvent() {
@@ -105,19 +114,23 @@ public class BossController : MonoBehaviour
         deathSound = (AudioClip)Resources.Load("bossDeath");
     }
 
-    IEnumerable HandleAttackSound() {
-        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+    IEnumerator PlayAttackSound() {
+        //Debug.Log("Attacking with Sound");
+        
         foleyManager.Play(attackSound.name);
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
     }
 
-    IEnumerable HandleTeleportSound() {
+    IEnumerator PlayTeleportSound() {
         yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
         foleyManager.Play(teleportSound.name);
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
     }
 
-    IEnumerable HandleDeathSound() {
+    IEnumerator PlayDeathSound() {
         yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
         foleyManager.Play(deathSound.name);
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
     }
 
     //------------------------------------------------------
@@ -132,16 +145,20 @@ public class BossController : MonoBehaviour
 
             // Fire
             if(fireCountdown <= 0f) {
-                StartCoroutine("HandleAttackSound");    
+                StartCoroutine(PlayAttackSound());
                 Attack();
-                fireCountdown = 1f/fireRate;
+                
+                fireCountdown = (float)animator.GetCurrentAnimatorStateInfo(1).length * 10f;//1f/fireRate;
+                //Debug.Log(fireCountdown);
             }
             fireCountdown -= Time.deltaTime;
+            Debug.Log(fireCountdown);
             return;
         }
     }
 
     private void Attack() {
+        attacking = true;
         GameObject newProjectile = (GameObject)Instantiate(projectile, attackOrigin.position, attackOrigin.rotation);
         allProjectiles.Add(newProjectile);
         ProjectileController currentProjectile = newProjectile.GetComponent<ProjectileController>();
@@ -151,6 +168,7 @@ public class BossController : MonoBehaviour
             currentProjectile.SetDamageAmount(bulletDamage);
             return;
         }
+        attacking = false;
     }
 
     public void HurtBoss(float damageAmount)
@@ -162,11 +180,32 @@ public class BossController : MonoBehaviour
     }
 
     //------------------------------------------------------
+    //                ANIMATION FUNCTIONS
+    //------------------------------------------------------
+
+        private void HandleAnimations() {
+        bool isAttacking = animator.GetBool("isAttacking");
+        bool isAlive = animator.GetBool("alive");
+
+        if(attacking && !isAttacking) {
+            animator.SetBool("isAttacking", true);
+        }
+        else if(!attacking && isAttacking) {
+            animator.SetBool("isAttacking", false);
+        }
+        else if(!isAlive && currentHealth > 0) {
+            animator.SetBool("alive", true);
+        }
+        else if(isAlive && currentHealth <= 0) {
+            animator.SetBool("alive", false);
+        }
+    }
+
+    //------------------------------------------------------
     //                GENERAL FUNCTIONS
     //------------------------------------------------------
     private void BossDeath() {
-        StartCoroutine("HandleDeathSound");
-
+        StartCoroutine(PlayDeathSound());
         hiddenKey.SetActive(true);
         hiddenKey.transform.position = transform.position;
         Destroy(gameObject);
@@ -192,20 +231,62 @@ public class BossController : MonoBehaviour
             // Since boss starts on TPAnchor[0], skip over that index with anchorOffset. 
             if (!teleporting && currentHealth < healthMilestones[milestoneIndex])
             {
-                
-                StartCoroutine("HandleTeleportSound");
+                int anchorIndex;
                 teleporting = true;
-
-                Vector3 nextTPLoc = tPAnchorController.GetSpecificAnchor(milestoneIndex + anchorOffset).position;
+                StartCoroutine(SpawnUnlitAnchor());
+                
+                StartCoroutine(PlayTeleportSound());
+                
+                anchorIndex = currentAnchor.transform.GetSiblingIndex() + anchorOffset;
+                if(anchorIndex == tPAnchorController.GetChildrenAnchors().Count) {
+                    anchorIndex = 0;
+                }
+                // Bug surrounding this, putting off for now
+                // Bug Details: anchor @ anchorIndex is being destroyed and not replaced properly, leading to 
+                // inconsistent teleporting
+                currentAnchor = tPAnchorController.GetSpecificAnchor(anchorIndex).gameObject;
+                
+                Vector3 nextTPLoc = currentAnchor.transform.position;
                 currentLocation = new Vector3(nextTPLoc.x, currentLocation.y, nextTPLoc.z);
                 
                 transform.position = currentLocation;
+                StartCoroutine(SpawnLitAnchor());
                 milestoneIndex++;
                 teleporting = false;
             }
         }
         
 
+    }
+
+    private void HandleAnchorSetup() {
+        int anchorIndex = thisLevelSetup.GetInitialSpawnLocIndex();
+        currentAnchor = tPAnchorController.GetSpecificAnchor(anchorIndex).gameObject;
+        cupNoFireObject = Resources.Load<GameObject>("Models/cupNoFire");
+        cupFireObject = Resources.Load<GameObject>("Models/cupFire");
+    }
+
+    IEnumerator SpawnLitAnchor() {
+        GameObject newAnchor = (GameObject) Instantiate(cupFireObject, currentAnchor.transform.position, currentAnchor.transform.rotation);
+        int anchorIndex = currentAnchor.transform.GetSiblingIndex();
+        tPAnchorController.RemoveSpecificAnchor(currentAnchor.transform);
+        Destroy(currentAnchor);
+        yield return new WaitUntil(() => currentAnchor == null);
+        currentAnchor = newAnchor;
+        tPAnchorController.AddAnchor(currentAnchor.transform);
+        currentAnchor.transform.SetSiblingIndex(anchorIndex);
+    }
+
+    IEnumerator SpawnUnlitAnchor() {
+        GameObject newAnchor = (GameObject) Instantiate(cupNoFireObject, currentAnchor.transform.position, currentAnchor.transform.rotation);
+        int anchorIndex = currentAnchor.transform.GetSiblingIndex();
+        tPAnchorController.RemoveSpecificAnchor(currentAnchor.transform);
+        Destroy(currentAnchor);
+        yield return new WaitUntil(() => currentAnchor == null);
+        currentAnchor = newAnchor;
+        tPAnchorController.AddAnchor(currentAnchor.transform);
+        currentAnchor.transform.SetSiblingIndex(anchorIndex);
+            
     }
 
     private void HandleSpawn()

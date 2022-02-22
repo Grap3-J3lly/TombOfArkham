@@ -12,13 +12,16 @@ public class Player : MonoBehaviour
     //------------------------------------------------------
     #region
 
+    // Animation Related
+    private Animator playerAnimator;
+
     // Audio Related
     private FoleyManager foleyManager;
     private AudioClip walkSound;
     private AudioClip jumpStartSound;
     private AudioClip jumpEndSound;
     private AudioClip deathSound;
-    private AudioClip idolCollect;
+    private AudioClip idolCollectSound;
     [SerializeField] private float walkSoundSpeedOffset = .15f;
 
     // Event Related
@@ -27,7 +30,7 @@ public class Player : MonoBehaviour
     // Level Related
     private LevelManager levelManager;
     private int collisionTagIndex;
-    private int idolCount = 0;
+    private int idolsRemaining;
 
     // Player Related
     public static Player Instance;
@@ -72,11 +75,14 @@ public class Player : MonoBehaviour
     //------------------------------------------------------
     #region
 
-    public int GetIdolCount(){return idolCount;}
-    public void SetIdolCount(int newCount){idolCount = newCount;}
+    public int GetIdolsRemaining(){return idolsRemaining;}
+    public void SetIdolsRemaining(int newCount){idolsRemaining = newCount;}
 
     public bool GetHandlingDeath() {return handlingDeath;}
     public void SetHandlingDeath(bool newValue) {handlingDeath = newValue;}
+
+    public int GetLivesRemaining() {return livesRemaining;}
+    public void SetLivesRemaining(int amount) {livesRemaining = amount;}
 
     #endregion
 
@@ -106,6 +112,7 @@ public class Player : MonoBehaviour
     private void Start() {
         Time.timeScale = 1;
         HandleAudioSetup();
+        HandleAnimationSetup();
     }
 
     private void Update()
@@ -121,6 +128,8 @@ public class Player : MonoBehaviour
         HandleJump();
 
         HandleAttack();
+
+        HandleAnimationChange();
 
         FallToDeathCheck();
     }
@@ -164,7 +173,8 @@ public class Player : MonoBehaviour
     private void HandleIdolCollision(GameObject obj)
     {
         StartCoroutine(HandleIdolAudio());
-        idolCount++;
+        idolsRemaining--;
+        levelManager.IncreaseScore();
         Destroy(obj);
     }
 
@@ -176,6 +186,44 @@ public class Player : MonoBehaviour
     #endregion
 
     //------------------------------------------------------
+    //          ANIMATION FUNCTIONS
+    //------------------------------------------------------
+
+    private void HandleAnimationSetup() {
+        playerAnimator = GetComponent<Animator>();
+    }
+
+    private void HandleAnimationChange() {
+        bool isWalking = playerAnimator.GetBool("isWalking");
+        bool jumping = playerAnimator.GetBool("isJumping");
+        bool inAir = playerAnimator.GetBool("inAir");
+
+        if(!isWalking && isMovePressed && !isJumping) {
+            playerAnimator.SetBool("isWalking", true);
+        }
+        else if(!isMovePressed && isWalking) {
+            playerAnimator.SetBool("isWalking", false);
+        } 
+        else if(isWalking && isJumping) {
+            playerAnimator.SetBool("isWalking", false);
+            playerAnimator.SetBool("inAir", true);
+        }
+        else if(!jumping && isJumpPressed) {
+            playerAnimator.SetBool("isJumping", true);
+            
+        } else if(!inAir && isJumping && jumping) {
+            playerAnimator.SetBool("inAir", true);
+        } else if(inAir && !isJumping) {
+            playerAnimator.SetBool("inAir", false);
+            playerAnimator.SetBool("isJumping", false);
+        }
+
+
+    }
+
+ 
+
+    //------------------------------------------------------
     //          AUDIO FUNCTIONS
     //------------------------------------------------------
 
@@ -185,7 +233,12 @@ public class Player : MonoBehaviour
         walkSound = (AudioClip)Resources.Load("walk");
         jumpStartSound = (AudioClip)Resources.Load("jumpStart");
         jumpEndSound = (AudioClip)Resources.Load("jumpEnd");
-        idolCollect = (AudioClip)Resources.Load("idolPickup");
+        idolCollectSound = (AudioClip)Resources.Load("idolPickup");
+    }
+
+    IEnumerator HandleDeathAudio() {
+        foleyManager.Play(deathSound.name);
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
     }
 
     IEnumerator HandleMoveAudio(Vector3 currentVelocity) {
@@ -205,7 +258,8 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator HandleIdolAudio() {
-        foleyManager.Play(idolCollect.name);
+        yield return new WaitUntil(() => foleyManager.GetAudioSource().isPlaying == false);
+        foleyManager.Play(idolCollectSound.name);
         yield return new WaitForSeconds(1);
     }
 
@@ -339,10 +393,11 @@ public class Player : MonoBehaviour
 
     public void HandleDeath()
     {
-        foleyManager.Play(deathSound.name);
+        StartCoroutine(HandleDeathAudio());
         handlingDeath = true;
         transform.position = levelManager.GetCurrentCheckpoint();
         livesRemaining -= 1;
+        levelManager.GetCurrentMenu().HandleTextUpdate(Menu.TextSectionType.LifeCount, livesRemaining);
         playerHealth = maxHealth;
         return;
     }
