@@ -373,6 +373,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void HandleMovement() {
+        Vector3 currentMovement = horizontalForce * Time.deltaTime * moveSpeed;
+        charController.Move(currentMovement);
+        StartCoroutine(HandleMoveAudio(currentMovement));
+    }
+
     #endregion
 
 
@@ -448,12 +454,6 @@ public class Player : MonoBehaviour
     {
         controlLayout.Basics.Attack.started += OnAttack;
         controlLayout.Basics.Attack.canceled += OnAttack;
-    }
-
-    private void HandleMovement() {
-        Vector3 currentMovement = horizontalForce * Time.deltaTime * moveSpeed;
-        charController.Move(currentMovement);
-        StartCoroutine(HandleMoveAudio(currentMovement));
     }
 
     private void FallToDeathCheck() {
