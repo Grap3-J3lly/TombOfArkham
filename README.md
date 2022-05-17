@@ -1,1 +1,1 @@
-# TombOfArkham
+A multilevel mobile 3D puzzle-platformer RPG with basic combat and targeting mechanics. The Tomb of Arkham worked as an introduction into scene navigation and management, proper asset implementation, animation transitions, and much more. 
